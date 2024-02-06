@@ -19,19 +19,30 @@ public class ProductRepository {
         productData.add(product);
         return product;
     }
-    public Product edit(Product editedProduct) {
-        String productId = editedProduct.getProductId();
+    public Product findById(String productId) {
         for (Product currentProduct : productData) {
             if (productId.equals(currentProduct.getProductId())) {
-                currentProduct.setProductName(editedProduct.getProductName());
-                currentProduct.setProductQuantity(editedProduct.getProductQuantity());
                 return currentProduct;
             }
         }
         throw new NoSuchElementException("Product not found with ID: " + productId);
     }
+    public Product edit(Product editedProduct) {
+        String productId = editedProduct.getProductId();
+        Product product = findById(productId);
+        product.setProductName(editedProduct.getProductName());
+        product.setProductQuantity(editedProduct.getProductQuantity());
+        return  product;
+    }
 
     public  Iterator<Product> findAll() {
         return  productData.iterator();
+    }
+
+    public Product delete(Product product) {
+        String productId = product.getProductId();
+        Product productToDelete = findById(productId);
+        productData.remove(productToDelete);
+        return productToDelete;
     }
 }
