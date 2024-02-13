@@ -18,8 +18,6 @@ public class BaseController {
 
     @GetMapping("")
     public String homePage(Model model) {
-        List<Product> allProducts = service.findAll();
-        model.addAttribute("products", allProducts);
         return "homePage";
     }
 
