@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -65,5 +66,54 @@ public class ProductRepositoryTest {
         savedProduct = productIterator.next();
         assertEquals(product2.getProductId(), savedProduct.getProductId());
         assertFalse(productIterator.hasNext());
+    }
+
+    @Test
+    void testEdit() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+
+        Product newProduct = new Product();
+        newProduct.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        newProduct.setProductName("Sampo Cap Bambang");
+        newProduct.setProductQuantity(100);
+
+        productRepository.edit(newProduct);
+        Iterator<Product> productIterator = productRepository.findAll();
+        assertTrue(productIterator.hasNext());
+        Product savedProduct = productIterator.next();
+        assertEquals(newProduct.getProductId(), savedProduct.getProductId());
+        assertEquals(newProduct.getProductName(), savedProduct.getProductName());
+        assertEquals(newProduct.getProductQuantity(), savedProduct.getProductQuantity());
+
+        // kalo gak ada
+        newProduct.setProductId("None");
+        assertThrows(
+                NoSuchElementException.class,
+                () -> productRepository.edit(newProduct)
+        );
+    }
+    @Test
+    void testDelete() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        productRepository.delete(product);
+        Iterator<Product> productIterator = productRepository.findAll();
+        assertFalse(productIterator.hasNext());
+
+        // kalo gak ada
+        product.setProductId("None");
+        assertThrows(
+                NoSuchElementException.class,
+                () -> productRepository.edit(product)
+        );
     }
 }
