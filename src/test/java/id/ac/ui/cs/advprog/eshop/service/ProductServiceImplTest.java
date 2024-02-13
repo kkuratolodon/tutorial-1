@@ -118,4 +118,28 @@ class ProductServiceImplTest {
         assertEquals(product, deletedProduct);
         verify(productRepository, times(1)).delete(product);
     }
+    @Test
+    void testFindById() {
+        Product product1 = new Product();
+        product1.setProductName("Sampo Cap Budi");
+        product1.setProductQuantity(6);
+        product1.setProductId("konz");
+
+        Product product2 = new Product();
+        product2.setProductName("Sampo Cap Badak");
+        product2.setProductQuantity(9);
+        product2.setProductId("znok");
+
+        List<Product> productList = Arrays.asList(product1, product2);
+        when(productRepository.findAll()).thenReturn(productList.iterator());
+
+        Product searchedProduct = productService.findById("konz");
+        assertEquals(searchedProduct, product1);
+
+        assertThrows(
+                NoSuchElementException.class,
+                () -> productService.findById("aku wibu")
+        );
+
+    }
 }
