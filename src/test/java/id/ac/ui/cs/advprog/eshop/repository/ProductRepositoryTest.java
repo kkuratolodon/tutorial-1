@@ -77,24 +77,24 @@ public class ProductRepositoryTest {
         productRepository.create(product);
         product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
 
-        Product newProduct = new Product();
-        newProduct.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        newProduct.setProductName("Sampo Cap Bambang");
-        newProduct.setProductQuantity(100);
+        Product editedProduct = new Product();
+        editedProduct.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        editedProduct.setProductName("Sampo Cap Bambang");
+        editedProduct.setProductQuantity(100);
 
-        productRepository.edit(newProduct);
+        productRepository.edit(editedProduct);
         Iterator<Product> productIterator = productRepository.findAll();
         assertTrue(productIterator.hasNext());
         Product savedProduct = productIterator.next();
-        assertEquals(newProduct.getProductId(), savedProduct.getProductId());
-        assertEquals(newProduct.getProductName(), savedProduct.getProductName());
-        assertEquals(newProduct.getProductQuantity(), savedProduct.getProductQuantity());
+        assertEquals(editedProduct.getProductId(), savedProduct.getProductId());
+        assertEquals(editedProduct.getProductName(), savedProduct.getProductName());
+        assertEquals(editedProduct.getProductQuantity(), savedProduct.getProductQuantity());
 
         // kalo gak ada
-        newProduct.setProductId("None");
+        editedProduct.setProductId("None");
         assertThrows(
                 NoSuchElementException.class,
-                () -> productRepository.edit(newProduct)
+                () -> productRepository.edit(editedProduct)
         );
     }
     @Test
