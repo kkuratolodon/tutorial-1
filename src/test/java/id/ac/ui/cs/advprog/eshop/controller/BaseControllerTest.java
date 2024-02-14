@@ -37,7 +37,7 @@ class BaseControllerTest {
     @Test
     void testCreateProductPage() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/"))
-                .andExpect(MockMvcResultMatchers.view().name("homePage"))
+                .andExpect(MockMvcResultMatchers.view().name("HomePage"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
