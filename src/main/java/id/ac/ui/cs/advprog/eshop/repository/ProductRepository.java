@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 @Repository
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
-    private int productCount = 0;
+    private static int productCount = 0;
 
     public Product create(Product product) {
         product.setProductId(Integer.toString(productCount));

@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-class ProductRepositoryTest {
+public class ProductRepositoryTest {
 
     @InjectMocks
     ProductRepository productRepository;
