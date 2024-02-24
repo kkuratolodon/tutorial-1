@@ -1,7 +1,32 @@
-# Modul 2
 Muhammad Irfan Firmansyah <br>
 2206816102 <br>
 Adpro-B <br>
+# Modul 3
+
+## Refleksi
+1. Explain what principles you apply to your project!
+- Single Responsibility Principle (SRP): SRP adalah prinsip di mana 1 module hanya mempunyai 1 responsibility. Oleh karena itu, saya memisahkan CarController dan ProductController menjadi 2 file terpisah.
+- Liskov Substitution Principle (LSP): LSP adalah prinsip di mana jika B adalah subclass A, maka object dari B dapat melakukan semua method di A dengan benar. Oleh karena itu, saya menghapus "extends" di CarController, karena asumsi saya, Car independent dengan Product sehingga object CarController tidak seharusnya memanggil method-method di ProductController
+- Interface Segregation Principle (ISP): ISP adalah prinsip di mana interface lebih baik hanya memuat method-method yang dibutuhkan oleh Class yang mengimplementasinya. Menurut saya, hal ini sudah diterapkan di kode saya karena semua method di interface ProductService dan CarService memang dipakai semua di class Implnya.
+- Dependency Inversion Principle (DIP): DIP adalah prinsip di mana sebuah class seharusnya bergantung terhadap interface atau abstract class daripada langsung terhadap class concretenya. Oleh karena itu, saya mengubah kode di `CarController.java` dari `private CarServiceImpl carservice;` menjadi `private CarService carservice;`, agar yang CarController memakai interfacenya bukan class yang concrete.
+
+ 2. Explain the advantages of applying SOLID principles to your project with examples.
+- Kode lebih aman saat mendapat update:<br>
+  Dengan menerapkan Single Responsibility Principle (SRP) dan Open/Closed Principle (OCP), kode akan menjadi lebih modular. Setiap komponen memiliki tanggung jawab yang jelas, dan perubahan pada satu bagian tidak akan merusak atau memengaruhi bagian lain. 
+- Kode yang Lebih Maintainable:<br>
+  Keberlanjutan (maintainability) kode sangat penting. Dengan menerapkan SOLID principles, kode akan lebih mudah dipahami karena setiap komponen memiliki tujuan spesifik dan terfokus. Ini membuat pemeliharaan kode menjadi lebih efisien. 
+- Kode yang Lebih Fleksibel dan Dapat Digunakan Kembali:<br>
+  Dengan menerapkan Liskov Substitution Principle (LSP) dan Dependency Inversion Principle (DIP), kode menjadi lebih fleksibel. Kode yang berfokus pada abstraksi dan mengurangi ketergantungan langsung antar komponen membuatnya lebih mudah untuk disesuaikan dengan perubahan.
+
+3. Explain the disadvantages of not applying SOLID principles to your project with examples.
+- Proses Modifikasi yang Sulit: <br>
+  Kode yang tidak menerapkan SOLID principles bisa memiliki kendala besar ketika melakukan modifikasi atau pembuatan fitur baru. Misalnya, jika Anda mengubah suatu bagian kecil dari kode, Anda mungkin khawatir karena bagian kecil tersebut berdampak pada banyak kode lain. Hal ini dapat membuat proses pengembangan lebih rumit dan meningkatkan risiko error.
+- Ketergantungan yang Tinggi dan Risiko Kerusakan Kode: <br>
+  Tanpa menerapkan prinsip Dependency Inversion, ketergantungan langsung pada implementasi spesifik dapat menyebabkan kerusakan pada kode. Misalnya, jika tidak mengikuti prinsip ini dan bergantung langsung pada CarServiceImpl, perubahan dalam CarServiceImpl seperti perubahan metode atau struktur kelas dapat merusak file CarController. Dengan menerapkan prinsip DIP dan menggunakan interface CarService, risiko kerusakan dapat diminimalkan.
+- Kesulitan Identifikasi Bug dan Kesalahan: <br>
+  Tanpa prinsip-prinsip SOLID, risiko untuk memasukkan bug atau kesalahan dalam kode menjadi lebih tinggi. Ketidakjelasan dalam tanggung jawab komponen, ketidakstabilan struktur kode, dan ketergantungan yang tinggi dapat mengakibatkan pengembang membuat kesalahan yang sulit diidentifikasi dan diperbaiki.
+
+# Modul 2
 
 ## Refleksi
 
