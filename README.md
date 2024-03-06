@@ -1,6 +1,15 @@
 Muhammad Irfan Firmansyah <br>
 2206816102 <br>
 Adpro-B <br>
+
+# Modul 4
+## Refleksi
+1. Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”), whether this TDD flow is useful enough for you or not. If not, explain things that you need to do next time you make more tests. <br><br>
+Prosedur TDD sangat membantu dalam pengerjaan karena memiliki alur yang baik. Alur ini terbagi menjadi tiga bagian: [RED], [GREEN], dan [REFACTOR]. Pembagian ini membantu dalam mengimplementasikan class karena sebelum class dibuat, semua kasus baik dan buruk sudah di-handle terlebih dahulu. Hal ini memastikan kode yang dihasilkan lebih aman dan meminimalisir error dan bug. Selain itu, TDD juga memudahkan proses refactor karena kode yang dihasilkan lebih terstruktur dan mudah dipahami.
+
+2. You have created unit tests in Tutorial. Now reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.
+<br><br>Pada unit test yang telah saya buat dalam tutorial ini, saya telah memenuhi prinsip F.I.R.S.T. Algoritma yang dikembangkan fokus pada satu metode tertentu dan tidak ikut campur dengan metode lain. Selain itu, pada pengujian layanan, saya telah menggunakan penggantian objek (mock) sehingga tidak ada dampak pada kode aslinya. Setiap tes juga dilengkapi dengan pernyataan (assertion) untuk memastikan bahwa segala kemungkinan telah diperiksa secara menyeluruh. Tentu saja, setiap tes dirancang untuk mencakup sebanyak mungkin skenario "happy" dan "unhappy" dari metode yang sedang diuji.
+
 # Modul 3
 
 ## Refleksi
